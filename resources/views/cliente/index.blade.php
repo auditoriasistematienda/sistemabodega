@@ -2,7 +2,7 @@
 @section('contenido')
 <section class="content-header">
   <h1>
-    CLIENTES
+    PLANILLA DE CLIENTES
   </h1>
 </section>
 <section class="content">
