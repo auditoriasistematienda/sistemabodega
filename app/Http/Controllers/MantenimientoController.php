@@ -2,10 +2,10 @@
 
 namespace SistemaGlobal\Http\Controllers;
 
-use SistemaGlobal\MisPedidos;
+use SistemaGlobal\Mantenimiento;
 use Illuminate\Http\Request;
 
-class MisPedidosController extends Controller
+class MantenimientoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,6 @@ class MisPedidosController extends Controller
     public function index()
     {
         //
-        return view ('pedidos.index');
-
     }
 
     /**
@@ -43,10 +41,10 @@ class MisPedidosController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \SistemaGlobal\MisPedidos  $misPedidos
+     * @param  \SistemaGlobal\Mantenimiento  $mantenimiento
      * @return \Illuminate\Http\Response
      */
-    public function show(MisPedidos $misPedidos)
+    public function show(Mantenimiento $mantenimiento)
     {
         //
     }
@@ -54,10 +52,10 @@ class MisPedidosController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \SistemaGlobal\MisPedidos  $misPedidos
+     * @param  \SistemaGlobal\Mantenimiento  $mantenimiento
      * @return \Illuminate\Http\Response
      */
-    public function edit(MisPedidos $misPedidos)
+    public function edit(Mantenimiento $mantenimiento)
     {
         //
     }
@@ -66,10 +64,10 @@ class MisPedidosController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \SistemaGlobal\MisPedidos  $misPedidos
+     * @param  \SistemaGlobal\Mantenimiento  $mantenimiento
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MisPedidos $misPedidos)
+    public function update(Request $request, Mantenimiento $mantenimiento)
     {
         //
     }
@@ -77,10 +75,10 @@ class MisPedidosController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \SistemaGlobal\MisPedidos  $misPedidos
+     * @param  \SistemaGlobal\Mantenimiento  $mantenimiento
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MisPedidos $misPedidos)
+    public function destroy(Mantenimiento $mantenimiento)
     {
         //
     }

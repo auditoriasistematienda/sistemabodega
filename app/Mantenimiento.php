@@ -4,7 +4,7 @@ namespace SistemaGlobal;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MisPedidos extends Model
+class Mantenimiento extends Model
 {
     //
 }
