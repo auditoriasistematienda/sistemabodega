@@ -2,10 +2,10 @@
 
 namespace SistemaGlobal\Http\Controllers;
 
-use SistemaGlobal\Almacen;
+use SistemaGlobal\Rutas;
 use Illuminate\Http\Request;
 
-class AlmacenController extends Controller
+class RutasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,9 @@ class AlmacenController extends Controller
     public function index()
     {
         //
-        return view ('almacen.index');
+        return view ('rutas.index');
+
+
     }
 
     /**
@@ -26,7 +28,7 @@ class AlmacenController extends Controller
     public function create()
     {
         //
-        return view ('almacen.create');
+        return view ('rutas.create');
 
     }
 
@@ -44,10 +46,10 @@ class AlmacenController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \SistemaGlobal\Almacen  $almacen
+     * @param  \SistemaGlobal\Rutas  $rutas
      * @return \Illuminate\Http\Response
      */
-    public function show(Almacen $almacen)
+    public function show(Rutas $rutas)
     {
         //
     }
@@ -55,10 +57,10 @@ class AlmacenController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \SistemaGlobal\Almacen  $almacen
+     * @param  \SistemaGlobal\Rutas  $rutas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Almacen $almacen)
+    public function edit(Rutas $rutas)
     {
         //
     }
@@ -67,10 +69,10 @@ class AlmacenController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \SistemaGlobal\Almacen  $almacen
+     * @param  \SistemaGlobal\Rutas  $rutas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Almacen $almacen)
+    public function update(Request $request, Rutas $rutas)
     {
         //
     }
@@ -78,10 +80,10 @@ class AlmacenController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \SistemaGlobal\Almacen  $almacen
+     * @param  \SistemaGlobal\Rutas  $rutas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Almacen $almacen)
+    public function destroy(Rutas $rutas)
     {
         //
     }
