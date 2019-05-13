@@ -13,6 +13,7 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="{{asset('plantilla/bower_components/Ionicons/css/ionicons.min.css')}}">
     <!-- Theme style -->
+    <link rel="stylesheet" href="{{asset('plantilla/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('plantilla/dist/css/AdminLTE.min.css')}}">
     <link rel="stylesheet" href="{{asset('plantilla/dist/css/skins/skin-blue.min.css')}}">
     <!-- Google Font -->
@@ -94,6 +95,10 @@
     <script src="{{asset('plantilla/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <!-- AdminLTE App -->
     <script src="{{asset('plantilla/dist/js/adminlte.min.js')}}"></script>
+    <!-- DataTables -->
+    <script src="{{asset('plantilla/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('plantilla/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+    @yield('scripts')
     
 </body>
 </html>

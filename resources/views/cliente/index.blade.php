@@ -13,7 +13,7 @@
                     <a href="{{url('cliente/create')}}" class="btn btn-primary">Registrar Cliente</a>
                 </div>
                 <div class="box-body">
-                    <table class="table table-bordered table-hover">
+                    <table id="myTable" class="table table-bordered table-hover dataTable">
                         <thead>
                             <th>DNI</th>
                             <th>Apellidos</th>
@@ -36,4 +36,12 @@
         </div>
     </div>
 </section>
+@endsection
+
+@section('scripts')
+<script>
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
 @endsection
