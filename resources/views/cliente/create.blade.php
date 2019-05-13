@@ -29,6 +29,26 @@
                         <label for="">Direccion</label>
                         <input type="text" class="form-control">
                     </div>
+                    <div class="form-group col-md-6">
+                        <label for="">Telefono</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="">Sexo</label>
+                        <select name="" id="" class="form-control"></select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="">Fecha Nacimiento</label>
+                        <input type="date" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="">Email</label>
+                        <input type="email" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="">Tipo de Usuario</label>
+                        <select name="" id="" class="form-control"></select>
+                    </div>
                 </div>
             </form>
         </div>
