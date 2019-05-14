@@ -2,7 +2,7 @@
 @section('contenido')
 <section class="content-header">
   <h1>
-    PLANILLA DE CLIENTES
+    Mentor CTMR
   </h1>
 </section>
 <section class="content">
@@ -20,6 +20,7 @@
                             <th>Nombres</th>
                             <th>Direccion</th>
                             <th>Opciones</th>
+
                         </thead>
                         <tbody>
                             <tr>
