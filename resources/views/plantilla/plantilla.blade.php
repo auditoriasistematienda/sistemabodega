@@ -24,9 +24,9 @@
             <!-- Logo -->
             <a href="" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b>A</b>LT</span>
+                <span class="logo-mini"><b>Sis</b>Log</span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg"><b>AdminLTE</b></span>
+                <span class="logo-lg"><b>Sistema Logístico</b></span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
@@ -48,8 +48,21 @@
             <div class="sidebar" id="scrollspy">
 
             <!-- sidebar menu: : style can be found in sidebar.less -->
-            <ul class="nav sidebar-menu">
-                <li class="header">TABLE OF CONTENTS</li>
+            <ul class="sidebar-menu">
+                <li class="header">MENU DE OPCIONES</li>
+                <li class="treeview menu-open">
+                    <a href="#">
+                        <i class="fa fa-users"></i>
+                        <span>Empleados</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href=""><i class="fa fa-address-book"></i> Registro de Empleados</a></li>
+                        <li><a href=""><i class="fa fa-circle-o"></i> Graficos estadisticos</a></li>
+                    </ul>
+                </li>
                 <li class="active"><a href=""><i class="fa fa-circle-o"></i> Empleados</a></li>
                 <li><a href=""><i class="fa fa-circle-o"></i> Productos</a></li>
                 <li><a href=""><i class="fa fa-circle-o"></i> Categorias</a></li>
@@ -94,6 +107,6 @@
     <script src="{{asset('plantilla/bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
     <!-- AdminLTE App -->
     <script src="{{asset('plantilla/dist/js/adminlte.min.js')}}"></script>
-    
+
 </body>
 </html>
