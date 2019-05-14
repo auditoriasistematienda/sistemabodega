@@ -2,7 +2,7 @@
 @section('contenido')
 <section class="content-header">
   <h1>
-    Mentor CTMR
+    PLANTILLA CLIENTE
   </h1>
 </section>
 <section class="content">
