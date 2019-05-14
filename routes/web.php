@@ -18,3 +18,5 @@ Route::resource('cliente','ClienteController');
 Route::resource('compras','ComprasController');
 Route::resource('ventas','VentasController');
 Route::resource('almacen','AlmacenController');
+Route::resource('rutas','RutasController');
+Route::resource('empleado','EmpleadoController');
