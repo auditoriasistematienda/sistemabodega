@@ -19,6 +19,11 @@
                             <th>Apellidos</th>
                             <th>Nombres</th>
                             <th>Direccion</th>
+                            <th>Telefono</th>
+                            <th>Fecha_Nac</th>
+                            <th>Email</th>
+                            <th>Sexo</th>
+                            <th>usuario</th>
                             <th>Opciones</th>
 
                         </thead>
