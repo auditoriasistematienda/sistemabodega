@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>SISTEMA GLOBAL</title>
     <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet" href="{{asset('plantilla/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
     <!-- Font Awesome -->
@@ -64,10 +64,41 @@
                     </ul>
                 </li>
                 <li class="active"><a href=""><i class="fa fa-circle-o"></i> Empleados</a></li>
-                <li><a href=""><i class="fa fa-circle-o"></i> Productos</a></li>
-                <li><a href=""><i class="fa fa-circle-o"></i> Categorias</a></li>
-                <li><a href=""><i class="fa fa-circle-o"></i> Ventas</a></li>
-                <li><a href=""><i class="fa fa-circle-o"></i> Reportes</a></li>
+
+                <hr class="sidebar-divider my-1">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('cliente')}}">
+                    <i class="fa fa-address-book"></i>
+                    <span>Clientes</span></a>
+                </li>
+
+                <hr class="sidebar-divider my-1">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url('proveedor')}}">
+                    <i class="fa fa-address-book"></i>
+                    <span>Proveedor</span></a>
+                </li>
+
+                <hr class="sidebar-divider my-1">
+                <li>
+                    <a href="">
+                    <i class="fa fa-circle-o"></i>
+                    <span>Ventas</span></a>
+                </li>
+
+                <hr class="sidebar-divider my-1">
+                <li>
+                    <a href="">
+                    <i class="fa fa-circle-o"></i>
+                    <span>Reportes</span></a>
+                </li>
+
+                <hr class="sidebar-divider my-1">
+                <li>
+                    <a href="">
+                    <i class="fa fa-circle-o"></i>
+                    <span>Reportes</span></a>
+                </li>
             </ul>
             </div>
             <!-- /.sidebar -->

@@ -2,7 +2,7 @@
 @section('contenido')
 <section class="content-header">
   <h1>
-    PLANILLA DE COMPRAS
+    PLANTILLA PROVEEDOR
   </h1>
 </section>
 <section class="content">
@@ -10,17 +10,19 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <a href="{{url('compras/create')}}" class="btn btn-primary">Registrar Compra</a>
+                    <a href="{{url('proveedor/create')}}" class="btn btn-primary">Registrar Proveedor</a>
                 </div>
                 <div class="box-body">
                     <table id="myTable" class="table table-bordered table-hover dataTable">
                         <thead>
                             <th>Codigo</th>
-                            <th>Codigo_Proveedor</th>
-                            <th>Compra </th>
-                            <th></th>
+                            <th>Razon Social</th>
+                            <th>Ruc</th>
+                            <th>Direccion</th>
+                            <th>Telefono</th>
+                            <th>Email</th>
                             <th>Opciones</th>
-                            
+
                         </thead>
                         <tbody>
                             <tr>
@@ -37,6 +39,12 @@
         </div>
     </div>
 </section>
+@endsection
 
-
+@section('scripts')
+<script>
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
 @endsection

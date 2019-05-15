@@ -9,7 +9,7 @@
     <div class="row">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Agregar Cliente</h3>
+                <h4 class="box-title">Agregar Cliente</h4>
             </div>
             <form action="">
                 <div class="box-body">
