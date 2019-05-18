@@ -13,7 +13,7 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="{{asset('plantilla/bower_components/Ionicons/css/ionicons.min.css')}}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{asset('plantilla/dist/css/AdminLTE.min.css')}}">
+    <link rel="stylesheet" href="{{asset('plantilla/dist/css/adminlte.min.css')}}">
     <link rel="stylesheet" href="{{asset('plantilla/dist/css/skins/skin-blue.min.css')}}">
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -48,9 +48,9 @@
             <div class="sidebar" id="scrollspy">
 
             <!-- sidebar menu: : style can be found in sidebar.less -->
-            <ul class="sidebar-menu">
+            <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MENU DE OPCIONES</li>
-                <li class="treeview menu-open">
+                <li class="treeview">
                     <a href="#">
                         <i class="fa fa-users"></i>
                         <span>Empleados</span>

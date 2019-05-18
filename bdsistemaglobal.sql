@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-05-2019 a las 22:29:43
--- Versión del servidor: 10.1.39-MariaDB
--- Versión de PHP: 7.3.5
+-- Tiempo de generación: 14-05-2019 a las 21:55:01
+-- Versión del servidor: 10.1.35-MariaDB
+-- Versión de PHP: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -62,18 +62,6 @@ CREATE TABLE `clientes` (
   `cli_email` varchar(50) NOT NULL,
   `cli_sexo` int(11) NOT NULL,
   `cli_usuario` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `cliente_ventas`
---
-
-CREATE TABLE `cliente_ventas` (
-  `ventasCliente_id` int(11) NOT NULL,
-  `cliente_id` int(11) NOT NULL,
-  `venta_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -254,6 +242,20 @@ CREATE TABLE `roles_users` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `rutas`
+--
+
+CREATE TABLE `rutas` (
+  `ruta_id` int(11) NOT NULL,
+  `transporte_id` int(11) NOT NULL,
+  `cli_id` int(11) NOT NULL,
+  `fecha_salida` date NOT NULL,
+  `fecha_retorno` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `sexo`
 --
 
@@ -287,6 +289,19 @@ CREATE TABLE `tipo_registro` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `transporte`
+--
+
+CREATE TABLE `transporte` (
+  `transporte_id` int(11) NOT NULL,
+  `empleado_id` int(11) NOT NULL,
+  `tipo_vehiculo` int(100) NOT NULL,
+  `placa_vehiculo` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `users`
 --
 
@@ -311,7 +326,8 @@ CREATE TABLE `ventas` (
   `venta_codigo` varchar(20) NOT NULL,
   `venta_tipoVenta` int(11) NOT NULL,
   `venta_estadoVenta` int(11) NOT NULL,
-  `venta_fecha` date NOT NULL
+  `venta_fecha` date NOT NULL,
+  `Cliente_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -352,14 +368,6 @@ ALTER TABLE `clientes`
   ADD UNIQUE KEY `cli_dni` (`cli_dni`),
   ADD KEY `cli_sexo` (`cli_sexo`),
   ADD KEY `cli_usuario` (`cli_usuario`);
-
---
--- Indices de la tabla `cliente_ventas`
---
-ALTER TABLE `cliente_ventas`
-  ADD PRIMARY KEY (`ventasCliente_id`),
-  ADD KEY `cliente_id` (`cliente_id`),
-  ADD KEY `venta_id` (`venta_id`);
 
 --
 -- Indices de la tabla `compras`
@@ -460,6 +468,14 @@ ALTER TABLE `roles_users`
   ADD KEY `user_id` (`user_id`);
 
 --
+-- Indices de la tabla `rutas`
+--
+ALTER TABLE `rutas`
+  ADD PRIMARY KEY (`ruta_id`),
+  ADD KEY `transporte_id` (`transporte_id`),
+  ADD KEY `cli_id` (`cli_id`);
+
+--
 -- Indices de la tabla `sexo`
 --
 ALTER TABLE `sexo`
@@ -478,6 +494,13 @@ ALTER TABLE `tipo_registro`
   ADD PRIMARY KEY (`tipoReg_id`);
 
 --
+-- Indices de la tabla `transporte`
+--
+ALTER TABLE `transporte`
+  ADD PRIMARY KEY (`transporte_id`),
+  ADD KEY `empleado_id` (`empleado_id`);
+
+--
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
@@ -489,6 +512,7 @@ ALTER TABLE `users`
 --
 ALTER TABLE `ventas`
   ADD PRIMARY KEY (`venta_id`),
+  ADD UNIQUE KEY `Cliente_id` (`Cliente_id`),
   ADD KEY `venta_tipoVenta` (`venta_tipoVenta`),
   ADD KEY `venta_estadoVenta` (`venta_estadoVenta`);
 
@@ -589,6 +613,12 @@ ALTER TABLE `roles_users`
   MODIFY `rol_user_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `rutas`
+--
+ALTER TABLE `rutas`
+  MODIFY `ruta_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `sexo`
 --
 ALTER TABLE `sexo`
@@ -605,6 +635,12 @@ ALTER TABLE `tipo_de_venta`
 --
 ALTER TABLE `tipo_registro`
   MODIFY `tipoReg_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `transporte`
+--
+ALTER TABLE `transporte`
+  MODIFY `transporte_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
@@ -627,14 +663,8 @@ ALTER TABLE `venta_productos`
 --
 ALTER TABLE `clientes`
   ADD CONSTRAINT `clientes_ibfk_1` FOREIGN KEY (`cli_sexo`) REFERENCES `sexo` (`sexo_id`),
-  ADD CONSTRAINT `clientes_ibfk_2` FOREIGN KEY (`cli_usuario`) REFERENCES `users` (`user_id`);
-
---
--- Filtros para la tabla `cliente_ventas`
---
-ALTER TABLE `cliente_ventas`
-  ADD CONSTRAINT `cliente_ventas_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`cli_id`),
-  ADD CONSTRAINT `cliente_ventas_ibfk_2` FOREIGN KEY (`venta_id`) REFERENCES `ventas` (`venta_id`);
+  ADD CONSTRAINT `clientes_ibfk_2` FOREIGN KEY (`cli_usuario`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `clientes_ibfk_3` FOREIGN KEY (`cli_id`) REFERENCES `rutas` (`cli_id`);
 
 --
 -- Filtros para la tabla `compras`
@@ -655,7 +685,8 @@ ALTER TABLE `compra_productos`
 ALTER TABLE `empleados`
   ADD CONSTRAINT `empleados_ibfk_1` FOREIGN KEY (`emp_usuario`) REFERENCES `users` (`user_id`),
   ADD CONSTRAINT `empleados_ibfk_2` FOREIGN KEY (`emp_sexo`) REFERENCES `sexo` (`sexo_id`),
-  ADD CONSTRAINT `empleados_ibfk_3` FOREIGN KEY (`emp_puesto`) REFERENCES `puestos_de_trabajo` (`puesto_id`);
+  ADD CONSTRAINT `empleados_ibfk_3` FOREIGN KEY (`emp_puesto`) REFERENCES `puestos_de_trabajo` (`puesto_id`),
+  ADD CONSTRAINT `empleados_ibfk_4` FOREIGN KEY (`emp_id`) REFERENCES `transporte` (`empleado_id`);
 
 --
 -- Filtros para la tabla `productos`
@@ -693,6 +724,12 @@ ALTER TABLE `roles_users`
   ADD CONSTRAINT `roles_users_ibfk_2` FOREIGN KEY (`rol_id`) REFERENCES `roles` (`rol_id`);
 
 --
+-- Filtros para la tabla `rutas`
+--
+ALTER TABLE `rutas`
+  ADD CONSTRAINT `rutas_ibfk_1` FOREIGN KEY (`transporte_id`) REFERENCES `transporte` (`transporte_id`);
+
+--
 -- Filtros para la tabla `users`
 --
 ALTER TABLE `users`
@@ -703,7 +740,8 @@ ALTER TABLE `users`
 --
 ALTER TABLE `ventas`
   ADD CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`venta_estadoVenta`) REFERENCES `estado_de_venta` (`estadVenta_id`),
-  ADD CONSTRAINT `ventas_ibfk_2` FOREIGN KEY (`venta_tipoVenta`) REFERENCES `tipo_de_venta` (`tipoVenta_id`);
+  ADD CONSTRAINT `ventas_ibfk_2` FOREIGN KEY (`venta_tipoVenta`) REFERENCES `tipo_de_venta` (`tipoVenta_id`),
+  ADD CONSTRAINT `ventas_ibfk_2.2` FOREIGN KEY (`Cliente_id`) REFERENCES `clientes` (`cli_id`);
 
 --
 -- Filtros para la tabla `venta_productos`
