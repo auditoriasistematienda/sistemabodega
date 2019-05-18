@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SISTEMA GLOBAL</title>
+    <title>Sistema Logístico</title>
     <!-- Bootstrap 3.3.7 -->
     <link rel="stylesheet" href="{{asset('plantilla/bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
     <!-- Font Awesome -->
@@ -37,7 +37,7 @@
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
-                    <li><a href=""><i class="fa fa-mail-reply"></i> Cerrar Sesión</a></li>
+                    <li><a href=""><i class="fa fa-sign-out"></i> Cerrar Sesión</a></li>
                 </ul>
                 </div>
             </nav>
@@ -49,56 +49,106 @@
 
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu" data-widget="tree">
-                <li class="header">MENú DE OPCIONES</li>
+                <li class="header">MENU DE OPCIONES</li>
+
+                <li>
+                    <a href="">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Inicio</span>
+                    </a>
+                </li>
+
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-users"></i>
-                        <span>Empleados</span>
+                        <i class="fa fa-database"></i>
+                        <span>Mantenimiento</span>
                         <span class="pull-right-container">
                             <i class="fa fa-angle-left pull-right"></i>
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href=""><i class="fa fa-address-book"></i> Registro de Empleados</a></li>
-                        <li><a href=""><i class="fa fa-circle-o"></i> Graficos estadisticos</a></li>
+                        <li><a href="{{url('empleado')}}"><i class="fa fa-address-card"></i> Registro de Empleados</a></li>
+                        <li><a href=""><i class="fa fa-archive"></i> Registro de Almacenes</a></li>
                     </ul>
                 </li>
-                <li class="active"><a href=""><i class="fa fa-circle-o"></i> Empleados</a></li>
 
-                <hr class="sidebar-divider my-1">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url('cliente')}}">
-                    <i class="fa fa-address-book"></i>
-                    <span>Clientes</span></a>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-users"></i>
+                        <span>Clientes</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{url('cliente')}}"><i class="fa fa-address-book"></i> Registro de Clientes</a></li>
+                    </ul>
                 </li>
 
-                <hr class="sidebar-divider my-1">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url('proveedor')}}">
-                    <i class="fa fa-address-book"></i>
-                    <span>Proveedor</span></a>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span>Compras</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{url('proveedor')}}"><i class="fa fa-address-book"></i> Registro de Proveedores</a></li>
+                        <li><a href="{{url('compras')}}"><i class="fa fa-book"></i> Registro de Compras</a></li>
+                        <li><a href=""><i class="fa fa-pie-chart"></i> Graficos Estadististicos</a></li>
+                    </ul>
                 </li>
 
-                <hr class="sidebar-divider my-1">
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-shopping-bag"></i>
+                        <span>Ventas</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{url('ventas')}}"><i class="fa fa-shopping-basket"></i> Registro de Ventas</a></li>
+                        <li><a href=""><i class="fa fa-pie-chart"></i> Graficos Estadististicos</a></li>
+                    </ul>
+                </li>
+
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-archive"></i>
+                        <span>Almacen</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{url('almacen')}}"><i class="fa fa-book"></i> Registro de Productos</a></li>
+                        <li><a href=""><i class="fa fa-pie-chart"></i> Graficos Estadististicos</a></li>
+                    </ul>
+                </li>
+
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-road"></i>
+                        <span>Rutas</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="{{url('rutas')}}"><i class="fa fa-book"></i> Registro de Rutas</a></li>
+                        <li><a href=""><i class="fa fa-pie-chart"></i> Graficos Estadististicos</a></li>
+                    </ul>
+                </li>
+
                 <li>
                     <a href="">
-                    <i class="fa fa-circle-o"></i>
-                    <span>Ventas</span></a>
+                        <i class="fa fa-shopping-basket"></i>
+                        <span>Mis pedidos</span>
+                    </a>
                 </li>
 
-                <hr class="sidebar-divider my-1">
-                <li>
-                    <a href="">
-                    <i class="fa fa-circle-o"></i>
-                    <span>Reportes</span></a>
-                </li>
-
-                <hr class="sidebar-divider my-1">
-                <li>
-                    <a href="">
-                    <i class="fa fa-circle-o"></i>
-                    <span>Reportes</span></a>
-                </li>
             </ul>
             </div>
             <!-- /.sidebar -->
@@ -112,8 +162,8 @@
         <footer class="main-footer">
             <!-- To the right -->
             <div class="pull-right hidden-xs">
-                <a href="" class="btn-lg"><i class="fa fa-facebook-official"></i></a>
-                <a href="" class="btn-lg"><i class="fa fa-instagram"></i></a>
+                <a href="https://github.com/globalauditoria/SistemaGlobal" class="btn-lg" target="_blank"><i class="fa fa-github"></i></a>
+                <a href="https://ucv.edu.pe/" class="btn-lg" target="_blank"><i class="fa fa-university"></i></a>
             </div>
             <!-- Default to the left -->
             <strong>Copyright &copy; 2019 <a href="" target="_blank">AdminLTE</a>.</strong> All rights reserved.
