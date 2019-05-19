@@ -241,7 +241,6 @@
     <!-- iCheck 1.0.1 -->
     <script src="{{asset('plantilla/plugins/iCheck/icheck.min.js')}}"></script>
 
-    })
     <script>
         $(function () {
             //Initialize Select2 Elements

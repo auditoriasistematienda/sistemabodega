@@ -67,6 +67,10 @@
                                     <select name="" id="" class="form-control"></select>
                                 </div>
                             </div>
+                            <div class="form-group col-md-12">
+                                <input type="submit" class="btn btn-primary" value="Registrar">
+                                <a href="{{url('cliente')}}" class="btn btn-danger">Cancelar</a>
+                            </div>
                         </div>
                     </div>
                 </form>

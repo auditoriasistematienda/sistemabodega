@@ -2,23 +2,27 @@
 @section('contenido')
 <section class="content-header">
   <h1>
-    Registrar Proveedor
+    Registrar Empleado
   </h1>
 </section>
 <section class="content">
     <div class="row">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h4 class="box-title">Agregar Proveedor</h4>
+                <h4 class="box-title">Agregar Empleado</h4>
             </div>
             <form action="">
                 <div class="box-body">
                     <div class="form-group col-md-6">
-                        <label for="">Razon Social</label>
+                        <label for="">DNI</label>
                         <input type="text" class="form-control">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="">Ruc</label>
+                        <label for="">Apellidos</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="">Nombres</label>
                         <input type="text" class="form-control">
                     </div>
                     <div class="form-group col-md-6">
@@ -30,12 +34,24 @@
                         <input type="text" class="form-control">
                     </div>
                     <div class="form-group col-md-6">
+                        <label for="">Sexo</label>
+                        <select name="" id="" class="form-control"></select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="">Fecha Nacimiento</label>
+                        <input type="date" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
                         <label for="">Email</label>
                         <input type="email" class="form-control">
                     </div>
+                    <div class="form-group col-md-6">
+                        <label for="">Tipo de Usuario</label>
+                        <select name="" id="" class="form-control"></select>
+                    </div>
                     <div class="form-group col-md-12">
                         <input type="submit" class="btn btn-primary" value="Registrar">
-                        <a href="{{url('proveedor')}}" class="btn btn-danger">Cancelar</a>
+                        <a href="{{url('empleado')}}" class="btn btn-danger">Cancelar</a>
                     </div>
                 </div>
             </form>
