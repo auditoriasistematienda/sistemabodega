@@ -49,6 +49,10 @@
                         <label for="">Tipo de Usuario</label>
                         <select name="" id="" class="form-control"></select>
                     </div>
+                    <div class="form-group col-md-12">
+                        <input type="submit" class="btn btn-primary" value="Registrar">
+                        <a href="{{url('empleado')}}" class="btn btn-danger">Cancelar</a>
+                    </div>
                 </div>
             </form>
         </div>

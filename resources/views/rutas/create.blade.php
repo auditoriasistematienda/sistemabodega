@@ -33,6 +33,10 @@
                         <label for="">Fecha Retorno</label>
                         <input type="date" class="form-control">
                     </div>
+                    <div class="form-group col-md-6">
+                        <input type="submit" class="btn btn-primary" value="Registrar">
+                        <a href="{{url('rutas')}}" class="btn btn-danger">Cancelar</a>
+                    </div>
                 </div>
             </form>
         </div>

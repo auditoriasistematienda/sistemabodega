@@ -33,6 +33,10 @@
                         <label for="">Email</label>
                         <input type="email" class="form-control">
                     </div>
+                    <div class="form-group col-md-12">
+                        <input type="submit" class="btn btn-primary" value="Registrar">
+                        <a href="{{url('proveedor')}}" class="btn btn-danger">Cancelar</a>
+                    </div>
                 </div>
             </form>
         </div>
