@@ -19,9 +19,11 @@
                             <th>Cliente</th>
                             <th>Fecha Salida</th>
                             <th>Fecha Retorno</th>
+                            <th>Opciones</th>
                         </thead>
                         <tbody>
                             <tr>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
