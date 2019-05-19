@@ -67,7 +67,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{url('empleado')}}"><i class="fa fa-address-card"></i> Registro de Empleados</a></li>
+                        <li><a href="{{url('empleado/create')}}"><i class="fa fa-address-card"></i> Registro de Empleados</a></li>
                         <li><a href=""><i class="fa fa-archive"></i> Registro de Almacenes</a></li>
                     </ul>
                 </li>
