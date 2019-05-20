@@ -21,3 +21,7 @@ Route::resource('almacen','AlmacenController');
 Route::resource('rutas','RutasController');
 Route::resource('empleado','EmpleadoController');
 Route::resource('proveedor','ProveedorController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
