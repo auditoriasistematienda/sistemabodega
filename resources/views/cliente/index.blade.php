@@ -29,7 +29,6 @@
                             <th>Email</th>
                             <th>Sexo</th>
                             <th>Opciones</th>
-
                         </thead>
                         <tbody>
                         @foreach($clientes as $cli)
