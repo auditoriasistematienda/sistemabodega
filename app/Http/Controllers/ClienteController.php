@@ -5,6 +5,8 @@ namespace SistemaGlobal\Http\Controllers;
 use SistemaGlobal\Cliente;
 use Illuminate\Http\Request;
 use DB;
+use SistemaGlobal\User;
+use Illuminate\Support\Facades\Hash;
 
 class ClienteController extends Controller
 {
@@ -50,7 +52,22 @@ class ClienteController extends Controller
             'cli_email' => 'nullable'
         ]);
         $data = $request->all();
-        $cliente = Cliente::create($data);
+        User::create([
+            'id' => $data['cli_dni'],
+            'usuario' => $data['cli_dni'],
+            'password' => Hash::make($data['cli_dni']),
+        ]);
+        $cliente = Cliente::create([
+            'cli_dni' => $data['cli_dni'],
+            'cli_apellidos' => $data['cli_apellidos'],
+            'cli_nombres' => $data['cli_nombres'],
+            'cli_sexo' => $data['cli_sexo'],
+            'cli_direccion' => $data['cli_direccion'],
+            'cli_nacimiento' => $data['cli_nacimiento'],
+            'cli_telefono' => $data['cli_telefono'],
+            'cli_email' => $data['cli_email'],
+            'cli_usuario' => $data['cli_dni']
+        ]);
         return redirect()->route('cliente.index')->with('status', 'Cliente agregado correctamente!');
     }
 
