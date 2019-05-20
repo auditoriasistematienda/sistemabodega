@@ -73,9 +73,8 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-        $data = Cliente::findOrFail($id);
-        $sexo = DB::table('sexo')->get();
-        return view('cliente.edit',['cliente'=>$data,'sexo'=>$sexo]);
+        $cliente = Cliente::findOrFail($id);
+        return view('cliente.edit',['cliente'=>$cliente]);
     }
 
     /**
