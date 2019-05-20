@@ -71,9 +71,9 @@ class ClienteController extends Controller
      * @param  \SistemaGlobal\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cliente $cliente)
+    public function edit($id)
     {
-        //
+        return view('cliente.edit');
     }
 
     /**

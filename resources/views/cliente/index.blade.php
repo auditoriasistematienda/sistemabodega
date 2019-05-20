@@ -43,9 +43,8 @@
                                 <td>{{$cli->cli_email}}</td>
                                 <td>{{$cli->sexo_nombre}}</td>
                                 <td>
-                                    <a href="" class="btn btn-sm btn-warning">Editar</a>
+                                    <a href="{{url('cliente/'.$cli->cli_id.'/edit')}}" class="btn btn-sm btn-warning">Editar</a>
                                     <a data-toggle="modal" data-target="#modal-delete-{{$cli->cli_id}}" class="btn btn-danger btn-sm" href="">Eliminar</a>
-                                    
                                 </td>
                             </tr>
                         @endforeach
