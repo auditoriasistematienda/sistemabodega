@@ -2,7 +2,7 @@
 @section('contenido')
 <section class="content-header">
   <h1>
-    PLANTILLA PROVEEDOR
+    PLANILLA PROVEEDOR
   </h1>
   <div class="col-xs-6">
             @if (session('status'))
@@ -41,7 +41,8 @@
                                 <td>{{$prov->prov_telefono}}</td>
                                 <td>{{$prov->prov_email}}</td>
                                 <td>
-                                    <a class="btn btn-sm btn-warning" href="">EDITAR</a>
+                                    <a class="btn btn-sm btn-warning" href="{{url('proveedor/'.$prov->prov_id.'/edit')}}">EDITAR</a>
+                                    <a class="btn btn-sm btn-danger" href="">ELIMINAR</a>
                                 </td>
                             </tr>
                             @endforeach

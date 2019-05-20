@@ -67,9 +67,11 @@ class ProveedorController extends Controller
      * @param  \SistemaGlobal\Proveedor  $proveedor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Proveedor $proveedor)
+    public function edit($id)
     {
-        //
+        $prov = Proveedor::findOrFail($id);
+        $sexo = DB::table('sexo')->get();
+        return view('proveedor.edit',['prov'=>$prov, 'sexo'=>$sexo]);
     }
 
     /**

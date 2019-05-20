@@ -126,6 +126,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="{{url('ventas')}}"><i class="fa fa-shopping-basket"></i> Registro de Ventas</a></li>
+                        <li><a href=""><i class="fa fa-book"></i> Productos Disponibles</a></li>
                         <li><a href=""><i class="fa fa-pie-chart"></i> Graficos Estadististicos</a></li>
                     </ul>
                 </li>
@@ -139,7 +140,7 @@
                         </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="{{url('almacen')}}"><i class="fa fa-book"></i> Registro de Productos</a></li>
+                        <li><a href="{{url('almacen')}}"><i class="fa fa-book"></i> Productos en Almacen</a></li>
                         <li><a href=""><i class="fa fa-pie-chart"></i> Graficos Estadististicos</a></li>
                     </ul>
                 </li>

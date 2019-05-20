@@ -2,10 +2,10 @@
 
 namespace SistemaGlobal\Http\Controllers;
 
-use SistemaGlobal\Mantenimiento;
+use SistemaGlobal\Productos;
 use Illuminate\Http\Request;
 
-class MantenimientoController extends Controller
+class ProductosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class MantenimientoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \SistemaGlobal\Mantenimiento  $mantenimiento
+     * @param  \SistemaGlobal\Productos  $productos
      * @return \Illuminate\Http\Response
      */
-    public function show(Mantenimiento $mantenimiento)
+    public function show(Productos $productos)
     {
         //
     }
@@ -52,10 +52,10 @@ class MantenimientoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \SistemaGlobal\Mantenimiento  $mantenimiento
+     * @param  \SistemaGlobal\Productos  $productos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mantenimiento $mantenimiento)
+    public function edit(Productos $productos)
     {
         //
     }
@@ -64,10 +64,10 @@ class MantenimientoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \SistemaGlobal\Mantenimiento  $mantenimiento
+     * @param  \SistemaGlobal\Productos  $productos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mantenimiento $mantenimiento)
+    public function update(Request $request, Productos $productos)
     {
         //
     }
@@ -75,10 +75,10 @@ class MantenimientoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \SistemaGlobal\Mantenimiento  $mantenimiento
+     * @param  \SistemaGlobal\Productos  $productos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mantenimiento $mantenimiento)
+    public function destroy(Productos $productos)
     {
         //
     }
