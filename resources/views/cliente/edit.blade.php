@@ -52,7 +52,7 @@
                             <input type="email" name="cli_email" class="form-control">
                         </div>
                         <div class="form-group col-md-12">
-                            <input type="submit" class="btn btn-primary" value="Registrar">
+                            <input type="submit" class="btn btn-warning" value="Modificar">
                             <a href="{{url('cliente')}}" class="btn btn-danger">Cancelar</a>
                         </div>
                     </div>

@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.6.6
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 14-05-2019 a las 21:55:01
--- Versión del servidor: 10.1.35-MariaDB
--- Versión de PHP: 7.2.9
+-- Servidor: localhost
+-- Tiempo de generación: 20-05-2019 a las 20:18:31
+-- Versión del servidor: 5.7.17-log
+-- Versión de PHP: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -34,6 +32,27 @@ CREATE TABLE `almacenes` (
   `alm_descripcion` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `almacenes`
+--
+
+INSERT INTO `almacenes` (`alm_id`, `alm_nombre`, `alm_descripcion`) VALUES
+(1, 'Zona 1', 'En este almacén se guardaran los productos stock'),
+(2, 'Zona 2', 'Guardar los productos que estén en stock'),
+(3, 'Zona 3', 'Guardar los productos que estén en stock'),
+(4, 'Zona 4', 'Guardar los productos que estén en stock'),
+(5, 'Zona 5', 'Guardar los productos que estén en stock'),
+(6, 'Zona 6', 'Guardar los productos que estén en stock'),
+(7, 'Zona 7', 'Guardar los productos que estén en stock'),
+(8, 'Zona 8', 'Guardar los productos que estén en stock'),
+(9, 'Zona 9', 'Guardar los productos que estén en stock'),
+(10, 'Zona 10', 'Guardar los productos que estén en stock'),
+(11, 'Zona 11', 'Guardar los productos que estén en stock'),
+(12, 'Zona 12', 'Guardar los productos que estén en stock'),
+(13, 'Zona 13', 'Guardar los productos que estén en stock'),
+(14, 'Zona 14', 'Guardar los productos que estén en stock'),
+(15, 'Zona 15', '');
+
 -- --------------------------------------------------------
 
 --
@@ -44,6 +63,27 @@ CREATE TABLE `categorias` (
   `cat_id` int(11) NOT NULL,
   `cat_nombre` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`cat_id`, `cat_nombre`) VALUES
+(1, 'útiles'),
+(2, 'medicamentos'),
+(3, 'medicamentos'),
+(4, 'útiles'),
+(5, 'ropa'),
+(6, 'avena'),
+(7, 'decoraciones'),
+(8, 'papel higiénico'),
+(9, 'celulares'),
+(10, 'computadoras'),
+(11, 'zapatillas'),
+(12, 'accesorios de deporte'),
+(13, 'pelotas'),
+(14, 'colonias'),
+(15, 'muebles');
 
 -- --------------------------------------------------------
 
@@ -64,6 +104,13 @@ CREATE TABLE `clientes` (
   `cli_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `clientes`
+--
+
+INSERT INTO `clientes` (`cli_id`, `cli_dni`, `cli_apellidos`, `cli_nombres`, `cli_direccion`, `cli_telefono`, `cli_nacimiento`, `cli_email`, `cli_sexo`, `cli_usuario`) VALUES
+(1, '70327340', 'Pazos Vasquez', 'Mentor', 'jr.atahualp # 130', '923308471', '1996-06-11', 'mentor.701619@gmail.com', 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -76,6 +123,27 @@ CREATE TABLE `compras` (
   `prov_id` int(11) NOT NULL,
   `com_almacenado` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `compras`
+--
+
+INSERT INTO `compras` (`com_id`, `com_codigo`, `prov_id`, `com_almacenado`) VALUES
+(1, '1', 1, 20),
+(2, '2', 2, 30),
+(3, '3', 3, 40),
+(4, '4', 4, 50),
+(5, '5', 5, 60),
+(6, '6', 6, 20),
+(7, '7', 7, 30),
+(8, '8', 8, 40),
+(9, '9', 9, 50),
+(10, '10', 10, 60),
+(11, '11', 11, 20),
+(12, '12', 12, 30),
+(13, '13', 13, 40),
+(14, '14', 14, 50),
+(15, '15', 15, 60);
 
 -- --------------------------------------------------------
 
@@ -121,6 +189,27 @@ CREATE TABLE `estados` (
   `estado_nombre` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `estados`
+--
+
+INSERT INTO `estados` (`estado_id`, `estado_nombre`) VALUES
+(1, 'disponible'),
+(2, 'no disponible'),
+(3, 'disponible'),
+(4, 'no disponible'),
+(5, 'disponible'),
+(6, 'ocupado'),
+(7, 'disponible'),
+(8, 'no disponible'),
+(9, 'disponible'),
+(10, 'ocupado'),
+(11, 'disponible'),
+(12, 'ocupado'),
+(13, 'disponible'),
+(14, 'no disponible'),
+(15, 'disponible');
+
 -- --------------------------------------------------------
 
 --
@@ -131,6 +220,27 @@ CREATE TABLE `estado_de_venta` (
   `estadVenta_id` int(11) NOT NULL,
   `estadVenta_nombre` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `estado_de_venta`
+--
+
+INSERT INTO `estado_de_venta` (`estadVenta_id`, `estadVenta_nombre`) VALUES
+(1, 'cancelado'),
+(2, 'enviado'),
+(3, 'finalizado'),
+(4, 'enviado'),
+(5, 'cancelado'),
+(6, 'enviado'),
+(7, 'finalizado'),
+(8, 'cancelado'),
+(9, 'cancelado'),
+(10, 'agotado'),
+(11, 'enviado'),
+(12, 'cancelado'),
+(13, 'finalizado'),
+(14, 'cancelado'),
+(15, 'enviado');
 
 -- --------------------------------------------------------
 
@@ -148,6 +258,14 @@ CREATE TABLE `productos` (
   `prod_precioVenta` float NOT NULL,
   `prod_descripcion` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`prod_id`, `prod_codigo`, `prod_nombre`, `prov_id`, `cat_id`, `prod_precioCompra`, `prod_precioVenta`, `prod_descripcion`) VALUES
+(1, '1', 'útiles', 3, 4, 15, 20, 'Material para usos escolares'),
+(2, '2', 'Pastillas', 11, 5, 1, 2, 'medicamento para recuperar la salud');
 
 -- --------------------------------------------------------
 
@@ -189,6 +307,27 @@ CREATE TABLE `proveedores` (
   `prov_email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `proveedores`
+--
+
+INSERT INTO `proveedores` (`prov_id`, `prov_razonSocial`, `prov_ruc`, `prov_direccion`, `prov_telefono`, `prov_email`) VALUES
+(1, 'Omar', '4166129954', 'jr.miranda', '98542578', 'omar.g@gmail.com'),
+(2, 'Axel', '78612567', 'billa bonita', '96527538', 'axelitoro@gmail.com'),
+(3, 'Joqtan', '988653737', 'oquendo', '97992653', 'joqtan@gmail.com'),
+(4, 'Alejandro', '186438335626', 'playa rimac', '97545367', 'alejandro@gmail.com'),
+(5, 'Jorge', '8616572518', 'callao', '987653724', 'jorge@gmail.com'),
+(6, 'gutierrez', '86353656', 'Canta callao', '8653635', 'gutierrez@gmail.com'),
+(7, 'Ramos', '853734278', 'mi peru', '91753366', 'ramos@gmail.com'),
+(8, 'morales', '8763634414', 'callao', '972654356', 'morales@gmail.com'),
+(9, 'ramis', '836635317', 'callao', '98365425', 'ramis@gmail.com'),
+(10, 'Llulian', '75383783653', 'atahualpa', '97534536', 'llulian@gmail.com'),
+(11, 'Lizbeth', '876545678', 'canta callao', '98765678', 'lizbeth@gmail.com'),
+(12, 'Diana', '8756787656', 'La molina', '98765459', 'diana@gmail.com'),
+(13, 'Michelle', '735388768', 'miraflores', '98615679', 'michelle@gmail.com'),
+(14, 'armando', '5678987654', 'boterin', '987654333', 'armando@gmail.com'),
+(15, 'Mentor', '567890987654', 'Cahuide', '98765456', 'mentor@gmail.com');
+
 -- --------------------------------------------------------
 
 --
@@ -199,6 +338,27 @@ CREATE TABLE `puestos_de_trabajo` (
   `puesto_id` int(11) NOT NULL,
   `puesto_nombre` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `puestos_de_trabajo`
+--
+
+INSERT INTO `puestos_de_trabajo` (`puesto_id`, `puesto_nombre`) VALUES
+(1, 'Maquinista'),
+(2, 'Operador'),
+(3, 'Almacenero'),
+(4, 'Marketing'),
+(5, 'RRHH'),
+(6, 'Mantenimiento'),
+(7, 'Calidad'),
+(8, 'Analista'),
+(9, 'Ayudante'),
+(10, 'Supervisor'),
+(11, 'Operador'),
+(12, 'Maquinista'),
+(13, 'Almacenero'),
+(14, 'Ayudante'),
+(15, 'Mantenimiento');
 
 -- --------------------------------------------------------
 
@@ -227,6 +387,27 @@ CREATE TABLE `roles` (
   `rol_descripcion` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `roles`
+--
+
+INSERT INTO `roles` (`rol_id`, `rol_nombre`, `rol_descripcion`) VALUES
+(1, 'Alejandro', 'administrador'),
+(2, 'Ramis ', 'administrador'),
+(3, 'Joqtan', 'administrador'),
+(4, 'Jorge', 'jefe de Ventas'),
+(5, 'Mentor', 'almacenero'),
+(6, 'armando', 'Transportista'),
+(7, 'Gutierrez', 'Jefe de Transporte'),
+(8, 'Axel', 'jefe de Ventas'),
+(9, 'morales', 'vendedor'),
+(10, 'Ramos', 'vendedor'),
+(11, 'Michelle', 'Cliente'),
+(12, 'Diana', 'Cliente'),
+(13, 'Omar', 'jefe de compras'),
+(14, 'Llulian', 'Transportista'),
+(15, 'Milla', 'almacenero');
+
 -- --------------------------------------------------------
 
 --
@@ -238,6 +419,27 @@ CREATE TABLE `roles_users` (
   `rol_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `roles_users`
+--
+
+INSERT INTO `roles_users` (`rol_user_id`, `rol_id`, `user_id`) VALUES
+(1, 1, 1),
+(2, 2, 2),
+(3, 3, 3),
+(4, 4, 4),
+(5, 5, 5),
+(6, 6, 6),
+(7, 7, 7),
+(8, 8, 8),
+(9, 9, 9),
+(10, 10, 10),
+(11, 11, 11),
+(12, 12, 13),
+(13, 13, 13),
+(14, 14, 14),
+(15, 15, 15);
 
 -- --------------------------------------------------------
 
@@ -253,6 +455,27 @@ CREATE TABLE `rutas` (
   `fecha_retorno` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `rutas`
+--
+
+INSERT INTO `rutas` (`ruta_id`, `transporte_id`, `cli_id`, `fecha_salida`, `fecha_retorno`) VALUES
+(1, 1, 1, '2019-01-11', '2019-01-13'),
+(2, 2, 2, '2019-01-14', '2019-01-16'),
+(3, 3, 3, '2019-01-19', '2019-01-21'),
+(4, 4, 4, '2019-01-22', '2019-01-24'),
+(5, 5, 5, '2019-01-25', '2019-01-27'),
+(6, 6, 6, '2019-01-28', '2019-01-30'),
+(7, 7, 7, '2019-02-01', '2019-02-03'),
+(8, 8, 8, '2019-02-04', '2019-02-06'),
+(9, 9, 9, '2019-02-07', '2019-02-09'),
+(10, 10, 10, '2019-02-10', '2019-02-12'),
+(11, 11, 11, '2019-02-11', '2019-02-13'),
+(12, 12, 12, '2019-02-14', '2019-02-16'),
+(13, 13, 13, '2019-02-17', '2019-02-19'),
+(14, 14, 14, '2019-02-20', '2019-02-22'),
+(15, 15, 15, '2019-02-23', '2019-02-25');
+
 -- --------------------------------------------------------
 
 --
@@ -263,6 +486,27 @@ CREATE TABLE `sexo` (
   `sexo_id` int(11) NOT NULL,
   `sexo_nombre` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `sexo`
+--
+
+INSERT INTO `sexo` (`sexo_id`, `sexo_nombre`) VALUES
+(1, 'Masculino'),
+(2, 'Femenino'),
+(3, 'Masculino'),
+(4, 'Femenino'),
+(5, 'Masculino'),
+(6, 'Femenino'),
+(7, 'Masculino'),
+(8, 'Femenino'),
+(9, 'Masculino'),
+(10, 'Femenino'),
+(11, 'Masculino'),
+(12, 'Femenino'),
+(13, 'Masculino'),
+(14, 'Femenino'),
+(15, 'Masculino');
 
 -- --------------------------------------------------------
 
@@ -275,6 +519,27 @@ CREATE TABLE `tipo_de_venta` (
   `tipoVenta_nombre` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `tipo_de_venta`
+--
+
+INSERT INTO `tipo_de_venta` (`tipoVenta_id`, `tipoVenta_nombre`) VALUES
+(1, 'delivery'),
+(2, 'presencial'),
+(3, 'delivery'),
+(4, 'unidad'),
+(5, 'media docena'),
+(6, 'paquete'),
+(7, 'unidad'),
+(8, '+ de una docena'),
+(9, 'unidad'),
+(10, 'docena'),
+(11, 'paquete'),
+(12, '+ de una docena'),
+(13, 'media docena'),
+(14, 'unidad'),
+(15, 'docena');
+
 -- --------------------------------------------------------
 
 --
@@ -286,6 +551,27 @@ CREATE TABLE `tipo_registro` (
   `tipoReg_nombre` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `tipo_registro`
+--
+
+INSERT INTO `tipo_registro` (`tipoReg_id`, `tipoReg_nombre`) VALUES
+(1, 'Lápiz'),
+(2, 'Apronax'),
+(3, 'Sofa'),
+(4, 'laptop HP'),
+(5, 'Celular Huawei'),
+(6, 'zapatillas adidas'),
+(7, 'pelotas walon'),
+(8, 'guantes de arquero'),
+(9, 'colonia Musk '),
+(10, 'jeans'),
+(11, 'avena 3 ositos'),
+(12, 'panadol'),
+(13, 'Cuadernos'),
+(14, 'zapatillas umbro'),
+(15, 'colonia nitro');
+
 -- --------------------------------------------------------
 
 --
@@ -295,9 +581,30 @@ CREATE TABLE `tipo_registro` (
 CREATE TABLE `transporte` (
   `transporte_id` int(11) NOT NULL,
   `empleado_id` int(11) NOT NULL,
-  `tipo_vehiculo` int(100) NOT NULL,
-  `placa_vehiculo` int(10) NOT NULL
+  `tipo_vehiculo` varchar(50) NOT NULL,
+  `placa_vehiculo` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `transporte`
+--
+
+INSERT INTO `transporte` (`transporte_id`, `empleado_id`, `tipo_vehiculo`, `placa_vehiculo`) VALUES
+(1, 1, 'moto', '89751'),
+(2, 2, 'camión', 'EO92LM'),
+(3, 3, 'carro', 'UI87OL'),
+(4, 4, 'moto', 'PL56GT'),
+(5, 5, 'carro', 'T4R6M8'),
+(6, 6, 'camión', 'YT65FG'),
+(7, 7, 'carro', 'RT36CV'),
+(8, 8, 'moto', 'JT4E8W'),
+(9, 9, 'camión ', 'VB54J7'),
+(10, 10, 'camioneta', 'QE34V9'),
+(11, 11, 'carro', 'F875CX'),
+(12, 12, 'moto', 'US5S8A'),
+(13, 13, 'camioneta', 'PA1C8L'),
+(14, 14, 'moto', '95KJ83'),
+(15, 15, 'camión', 'QW937H');
 
 -- --------------------------------------------------------
 
@@ -315,6 +622,27 @@ CREATE TABLE `users` (
   `update_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`user_id`, `user_usuario`, `user_password`, `user_estado`, `user_remember_token`, `created_at`, `update_at`) VALUES
+(1, 'Jeriko05', '123456', 1, NULL, NULL, NULL),
+(2, 'jorke.kai', '123456', 2, NULL, NULL, NULL),
+(3, 'joqtan10', '123456', 3, NULL, NULL, NULL),
+(4, 'jorge10', '123456', 4, NULL, NULL, NULL),
+(5, 'Ramis10', '123456', 5, NULL, NULL, NULL),
+(6, 'Llulian10', '123456', 6, NULL, NULL, NULL),
+(7, 'Axel10', '123456', 7, NULL, NULL, NULL),
+(8, 'Alejandro', '123456', 8, NULL, NULL, NULL),
+(9, 'Gutierrez10', '123456', 9, NULL, NULL, NULL),
+(10, 'Omar10', '123456', 10, NULL, NULL, NULL),
+(11, 'Armando', '123456', 11, NULL, NULL, NULL),
+(12, 'Ramos10', '123456', 12, NULL, NULL, NULL),
+(13, 'Morales10', '123456', 13, NULL, NULL, NULL),
+(14, 'Milla10', '123456', 14, NULL, NULL, NULL),
+(15, 'Michelle10', '123456', 15, NULL, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -329,6 +657,13 @@ CREATE TABLE `ventas` (
   `venta_fecha` date NOT NULL,
   `Cliente_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `ventas`
+--
+
+INSERT INTO `ventas` (`venta_id`, `venta_codigo`, `venta_tipoVenta`, `venta_estadoVenta`, `venta_fecha`, `Cliente_id`) VALUES
+(1, '2', 10, 6, '2019-03-01', 1);
 
 -- --------------------------------------------------------
 
@@ -532,128 +867,107 @@ ALTER TABLE `venta_productos`
 -- AUTO_INCREMENT de la tabla `almacenes`
 --
 ALTER TABLE `almacenes`
-  MODIFY `alm_id` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `alm_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `cli_id` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `cli_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `compras`
 --
 ALTER TABLE `compras`
-  MODIFY `com_id` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `com_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `compra_productos`
 --
 ALTER TABLE `compra_productos`
   MODIFY `comProd_id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT de la tabla `empleados`
 --
 ALTER TABLE `empleados`
   MODIFY `emp_id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT de la tabla `estados`
 --
 ALTER TABLE `estados`
-  MODIFY `estado_id` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `estado_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `estado_de_venta`
 --
 ALTER TABLE `estado_de_venta`
-  MODIFY `estadVenta_id` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `estadVenta_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `productos_disponibles`
 --
 ALTER TABLE `productos_disponibles`
   MODIFY `prodDisp_id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT de la tabla `productos_en_almacen`
 --
 ALTER TABLE `productos_en_almacen`
   MODIFY `prodAlm_id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT de la tabla `proveedores`
 --
 ALTER TABLE `proveedores`
-  MODIFY `prov_id` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `prov_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `puestos_de_trabajo`
 --
 ALTER TABLE `puestos_de_trabajo`
-  MODIFY `puesto_id` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `puesto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `rol_id` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `rol_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `roles_users`
 --
 ALTER TABLE `roles_users`
-  MODIFY `rol_user_id` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `rol_user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `rutas`
 --
 ALTER TABLE `rutas`
-  MODIFY `ruta_id` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `ruta_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `sexo`
 --
 ALTER TABLE `sexo`
-  MODIFY `sexo_id` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `sexo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `tipo_de_venta`
 --
 ALTER TABLE `tipo_de_venta`
-  MODIFY `tipoVenta_id` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `tipoVenta_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `tipo_registro`
 --
 ALTER TABLE `tipo_registro`
-  MODIFY `tipoReg_id` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `tipoReg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `transporte`
 --
 ALTER TABLE `transporte`
-  MODIFY `transporte_id` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `transporte_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `venta_id` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `venta_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `venta_productos`
 --
 ALTER TABLE `venta_productos`
   MODIFY `ventaProd_id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- Restricciones para tablas volcadas
 --
@@ -749,7 +1063,6 @@ ALTER TABLE `ventas`
 ALTER TABLE `venta_productos`
   ADD CONSTRAINT `venta_productos_ibfk_2` FOREIGN KEY (`venta_id`) REFERENCES `ventas` (`venta_id`),
   ADD CONSTRAINT `venta_productos_ibfk_3` FOREIGN KEY (`prodDisp_id`) REFERENCES `productos_disponibles` (`prodDisp_id`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
