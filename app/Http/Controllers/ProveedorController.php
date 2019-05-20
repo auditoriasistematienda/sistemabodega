@@ -4,6 +4,7 @@ namespace SistemaGlobal\Http\Controllers;
 
 use SistemaGlobal\Proveedor;
 use Illuminate\Http\Request;
+use DB;
 
 class ProveedorController extends Controller
 {
@@ -14,7 +15,9 @@ class ProveedorController extends Controller
      */
     public function index()
     {
-       return view ('proveedor.index');
+        $data = DB::table('proveedores')
+                ->get();
+       return view ('proveedor.index',['proveedores'=>$data]);
     }
 
     /**
@@ -35,7 +38,16 @@ class ProveedorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'prov_razonSocial' => 'required',
+            'prov_ruc' => 'required|max:110',
+            'prov_direccion' => 'required|max:50',
+            'prov_telefono' => 'nullable',
+            'prov_email' => 'nullable|max:70'
+        ]);
+        $data = $request->all();
+        $prov = Proveedor::create($data);
+        return redirect()->route('proveedor.index')->with('status', 'Proveedor Agregado exitosamente!');
     }
 
     /**
