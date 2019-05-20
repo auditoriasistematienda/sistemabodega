@@ -18,7 +18,7 @@ class AlmacenController extends Controller
         //
         $data = DB::table('almacenes')
                 ->get();
-        return view ('almacen.index', ['almacenes'=>$data]);
+        return view ('', ['almacenes'=>$data]);
     }
 
     /**
@@ -29,7 +29,7 @@ class AlmacenController extends Controller
     public function create()
     {
         //
-        return view ('almacen.create');
+        return view ('');
 
     }
 
