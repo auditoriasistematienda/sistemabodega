@@ -37,10 +37,14 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="">Sexo</label>
-                            <select name="cli_sexo" id="" class="form-control">
-                                <option value="" hidden>--- Seleccione ---</option>
-                                <option value="1">Femenino</option>
-                                <option value="2">Masculino</option>
+                            <select name="cliente_sexo" class="form-control" required>
+                                @foreach ($sexo as $sexo)
+                                    @if ($sexo->sexo_id == $cliente->cliente_sexo)
+                                    <option value="{{$sexo->sexo_id}}" selected>{{$sexo->sexo_nombre}}</option>
+                                    @else
+                                    <option value="{{$sexo->sexo_id}}">{{$sexo->sexo_nombre}}</option>
+                                    @endif
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col-md-6">
