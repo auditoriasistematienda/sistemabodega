@@ -2,11 +2,10 @@
 
 namespace SistemaGlobal\Http\Controllers;
 
-use SistemaGlobal\Almacen;
+use SistemaGlobal\ProductosDisponibles;
 use Illuminate\Http\Request;
-use DB;
 
-class AlmacenController extends Controller
+class ProductosDisponiblesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +15,6 @@ class AlmacenController extends Controller
     public function index()
     {
         //
-        $data = DB::table('almacenes')
-                ->get();
-        return view ('almacen.index', ['almacenes'=>$data]);
     }
 
     /**
@@ -29,8 +25,6 @@ class AlmacenController extends Controller
     public function create()
     {
         //
-        return view ('almacen.create');
-
     }
 
     /**
@@ -47,10 +41,10 @@ class AlmacenController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \SistemaGlobal\Almacen  $almacen
+     * @param  \SistemaGlobal\ProductosDisponibles  $productosDisponibles
      * @return \Illuminate\Http\Response
      */
-    public function show(Almacen $almacen)
+    public function show(ProductosDisponibles $productosDisponibles)
     {
         //
     }
@@ -58,10 +52,10 @@ class AlmacenController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \SistemaGlobal\Almacen  $almacen
+     * @param  \SistemaGlobal\ProductosDisponibles  $productosDisponibles
      * @return \Illuminate\Http\Response
      */
-    public function edit(Almacen $almacen)
+    public function edit(ProductosDisponibles $productosDisponibles)
     {
         //
     }
@@ -70,10 +64,10 @@ class AlmacenController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \SistemaGlobal\Almacen  $almacen
+     * @param  \SistemaGlobal\ProductosDisponibles  $productosDisponibles
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Almacen $almacen)
+    public function update(Request $request, ProductosDisponibles $productosDisponibles)
     {
         //
     }
@@ -81,10 +75,10 @@ class AlmacenController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \SistemaGlobal\Almacen  $almacen
+     * @param  \SistemaGlobal\ProductosDisponibles  $productosDisponibles
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Almacen $almacen)
+    public function destroy(ProductosDisponibles $productosDisponibles)
     {
         //
     }
