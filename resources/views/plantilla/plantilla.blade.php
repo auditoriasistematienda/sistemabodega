@@ -15,6 +15,8 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('plantilla/dist/css/adminlte.min.css')}}">
     <link rel="stylesheet" href="{{asset('plantilla/dist/css/skins/skin-blue.min.css')}}">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 
     <!-- daterange picker -->
     <link rel="stylesheet" href="{{asset('plantilla/bower_components/bootstrap-daterangepicker/daterangepicker.css')}}">
@@ -205,7 +207,7 @@
 
     <!-- FastClick -->
     <script src="{{asset('plantilla/bower_components/fastclick/lib/fastclick.js')}}"></script>
-
+    
     <!-- Sparkline -->
     <script src="{{asset('plantilla/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js')}}"></script>
     <!-- jvectormap  -->
@@ -241,6 +243,9 @@
     <!-- iCheck 1.0.1 -->
     <script src="{{asset('plantilla/plugins/iCheck/icheck.min.js')}}"></script>
 
+    <!-- DataTables -->
+    <script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    @yield('scripts')
     <script>
         $(function () {
             //Initialize Select2 Elements
