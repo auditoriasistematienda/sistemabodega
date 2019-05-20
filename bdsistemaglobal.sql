@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 20-05-2019 a las 20:18:31
+-- Tiempo de generación: 20-05-2019 a las 22:48:14
 -- Versión del servidor: 5.7.17-log
 -- Versión de PHP: 5.6.30
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `bdsistemaglobal`
+-- Base de datos: `bd`
 --
 
 -- --------------------------------------------------------
@@ -37,7 +37,7 @@ CREATE TABLE `almacenes` (
 --
 
 INSERT INTO `almacenes` (`alm_id`, `alm_nombre`, `alm_descripcion`) VALUES
-(1, 'Zona 1', 'En este almacén se guardaran los productos stock'),
+(1, 'Zona 1', 'Guardar los productos que estén en stock'),
 (2, 'Zona 2', 'Guardar los productos que estén en stock'),
 (3, 'Zona 3', 'Guardar los productos que estén en stock'),
 (4, 'Zona 4', 'Guardar los productos que estén en stock'),
@@ -74,16 +74,16 @@ INSERT INTO `categorias` (`cat_id`, `cat_nombre`) VALUES
 (3, 'medicamentos'),
 (4, 'útiles'),
 (5, 'ropa'),
-(6, 'avena'),
+(6, 'Lácteos'),
 (7, 'decoraciones'),
-(8, 'papel higiénico'),
-(9, 'celulares'),
-(10, 'computadoras'),
-(11, 'zapatillas'),
-(12, 'accesorios de deporte'),
-(13, 'pelotas'),
-(14, 'colonias'),
-(15, 'muebles');
+(8, 'Limpieza'),
+(9, 'Tecnologías'),
+(10, 'Frutas y Verduras'),
+(11, 'calzados'),
+(12, 'ropa deportiva'),
+(13, 'Accesorios Deporte'),
+(14, 'Perfumería'),
+(15, 'Casa Hogar');
 
 -- --------------------------------------------------------
 
@@ -194,21 +194,8 @@ CREATE TABLE `estados` (
 --
 
 INSERT INTO `estados` (`estado_id`, `estado_nombre`) VALUES
-(1, 'disponible'),
-(2, 'no disponible'),
-(3, 'disponible'),
-(4, 'no disponible'),
-(5, 'disponible'),
-(6, 'ocupado'),
-(7, 'disponible'),
-(8, 'no disponible'),
-(9, 'disponible'),
-(10, 'ocupado'),
-(11, 'disponible'),
-(12, 'ocupado'),
-(13, 'disponible'),
-(14, 'no disponible'),
-(15, 'disponible');
+(1, 'activo'),
+(2, 'inactivo');
 
 -- --------------------------------------------------------
 
@@ -235,7 +222,7 @@ INSERT INTO `estado_de_venta` (`estadVenta_id`, `estadVenta_nombre`) VALUES
 (7, 'finalizado'),
 (8, 'cancelado'),
 (9, 'cancelado'),
-(10, 'agotado'),
+(10, 'enviado'),
 (11, 'enviado'),
 (12, 'cancelado'),
 (13, 'finalizado'),
@@ -264,8 +251,8 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`prod_id`, `prod_codigo`, `prod_nombre`, `prov_id`, `cat_id`, `prod_precioCompra`, `prod_precioVenta`, `prod_descripcion`) VALUES
-(1, '1', 'útiles', 3, 4, 15, 20, 'Material para usos escolares'),
-(2, '2', 'Pastillas', 11, 5, 1, 2, 'medicamento para recuperar la salud');
+(1, '1', 'Mochila', 3, 4, 15, 20, 'Material para usos escolares'),
+(2, '2', 'Sildenafilo', 11, 5, 1, 2, 'Medicamento para el aumento del deseo sexual');
 
 -- --------------------------------------------------------
 
@@ -347,8 +334,8 @@ INSERT INTO `puestos_de_trabajo` (`puesto_id`, `puesto_nombre`) VALUES
 (1, 'Maquinista'),
 (2, 'Operador'),
 (3, 'Almacenero'),
-(4, 'Marketing'),
-(5, 'RRHH'),
+(4, 'Reponedor'),
+(5, 'Jefe de línea'),
 (6, 'Mantenimiento'),
 (7, 'Calidad'),
 (8, 'Analista'),
@@ -396,7 +383,7 @@ INSERT INTO `roles` (`rol_id`, `rol_nombre`, `rol_descripcion`) VALUES
 (2, 'Ramis ', 'administrador'),
 (3, 'Joqtan', 'administrador'),
 (4, 'Jorge', 'jefe de Ventas'),
-(5, 'Mentor', 'almacenero'),
+(5, 'Mentor', 'Almacenero'),
 (6, 'armando', 'Transportista'),
 (7, 'Gutierrez', 'Jefe de Transporte'),
 (8, 'Axel', 'jefe de Ventas'),
@@ -524,21 +511,8 @@ CREATE TABLE `tipo_de_venta` (
 --
 
 INSERT INTO `tipo_de_venta` (`tipoVenta_id`, `tipoVenta_nombre`) VALUES
-(1, 'delivery'),
-(2, 'presencial'),
-(3, 'delivery'),
-(4, 'unidad'),
-(5, 'media docena'),
-(6, 'paquete'),
-(7, 'unidad'),
-(8, '+ de una docena'),
-(9, 'unidad'),
-(10, 'docena'),
-(11, 'paquete'),
-(12, '+ de una docena'),
-(13, 'media docena'),
-(14, 'unidad'),
-(15, 'docena');
+(2, 'Presencial'),
+(10, 'Delivery');
 
 -- --------------------------------------------------------
 
@@ -629,19 +603,19 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `user_usuario`, `user_password`, `user_estado`, `user_remember_token`, `created_at`, `update_at`) VALUES
 (1, 'Jeriko05', '123456', 1, NULL, NULL, NULL),
 (2, 'jorke.kai', '123456', 2, NULL, NULL, NULL),
-(3, 'joqtan10', '123456', 3, NULL, NULL, NULL),
-(4, 'jorge10', '123456', 4, NULL, NULL, NULL),
-(5, 'Ramis10', '123456', 5, NULL, NULL, NULL),
-(6, 'Llulian10', '123456', 6, NULL, NULL, NULL),
-(7, 'Axel10', '123456', 7, NULL, NULL, NULL),
-(8, 'Alejandro', '123456', 8, NULL, NULL, NULL),
-(9, 'Gutierrez10', '123456', 9, NULL, NULL, NULL),
-(10, 'Omar10', '123456', 10, NULL, NULL, NULL),
-(11, 'Armando', '123456', 11, NULL, NULL, NULL),
-(12, 'Ramos10', '123456', 12, NULL, NULL, NULL),
-(13, 'Morales10', '123456', 13, NULL, NULL, NULL),
-(14, 'Milla10', '123456', 14, NULL, NULL, NULL),
-(15, 'Michelle10', '123456', 15, NULL, NULL, NULL);
+(3, 'joqtan10', '123456', 1, NULL, NULL, NULL),
+(4, 'jorge10', '123456', 2, NULL, NULL, NULL),
+(5, 'Ramis10', '123456', 1, NULL, NULL, NULL),
+(6, 'Llulian10', '123456', 2, NULL, NULL, NULL),
+(7, 'Axel10', '123456', 1, NULL, NULL, NULL),
+(8, 'Alejandro', '123456', 2, NULL, NULL, NULL),
+(9, 'Gutierrez10', '123456', 1, NULL, NULL, NULL),
+(10, 'Omar10', '123456', 1, NULL, NULL, NULL),
+(11, 'Armando', '123456', 1, NULL, NULL, NULL),
+(12, 'Ramos10', '123456', 1, NULL, NULL, NULL),
+(13, 'Morales10', '123456', 1, NULL, NULL, NULL),
+(14, 'Milla10', '123456', 2, NULL, NULL, NULL),
+(15, 'Michelle10', '123456', 1, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
