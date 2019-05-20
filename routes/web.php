@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('plantilla.plantilla');
+    return view('');
 });
 Route::resource('cliente','ClienteController');
 Route::resource('compras','ComprasController');
