@@ -4,6 +4,7 @@ namespace SistemaGlobal\Http\Controllers;
 
 use SistemaGlobal\Cliente;
 use Illuminate\Http\Request;
+use DB;
 
 class ClienteController extends Controller
 {
@@ -14,7 +15,10 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        return view ('cliente.index');
+        $data = DB::table('clientes')
+                ->join('sexo','sexo.sexo_id','cli_sexo')
+                ->get();
+        return view ('cliente.index',['clientes'=>$data]);
     }
 
     /**
@@ -35,7 +39,19 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'cli_dni' => 'required|unique:clientes,cli_dni|numeric|digits:8',
+            'cli_apellidos' => 'required|max:50',
+            'cli_nombres' => 'required|max:50',
+            'cli_sexo' => 'required',
+            'cli_direccion' => 'nullable|max:70',
+            'cli_nacimiento' => 'required',
+            'cli_telefono' => 'nullable|min:7|max:13',
+            'cli_email' => 'nullable'
+        ]);
+        $data = $request->all();
+        $cliente = Cliente::create($data);
+        return redirect()->route('cliente.index')->with('status', 'Cliente agregado correctamente!');
     }
 
     /**

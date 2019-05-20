@@ -17,8 +17,7 @@ class Cliente extends Model
         'cli_telefono',
         'cli_nacimiento',
         'cli_email',
-        'cli_sexo',
-        'cli_usuario'
+        'cli_sexo'
     ];
     protected $guarded = [];
 }
