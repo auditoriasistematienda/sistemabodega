@@ -4,6 +4,13 @@
   <h1>
     PLANTILLA PROVEEDOR
   </h1>
+  <div class="col-xs-6">
+            @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+            @endif
+        </div>
 </section>
 <section class="content">
     <div class="row">
@@ -25,13 +32,19 @@
 
                         </thead>
                         <tbody>
+                            @foreach($proveedores as $prov)
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{$prov->prov_id}}</td>
+                                <td>{{$prov->prov_razonSocial}}</td>
+                                <td>{{$prov->prov_ruc}}</td>
+                                <td>{{$prov->prov_direccion}}</td>
+                                <td>{{$prov->prov_telefono}}</td>
+                                <td>{{$prov->prov_email}}</td>
+                                <td>
+                                    <a class="btn btn-sm btn-warning" href="">EDITAR</a>
+                                </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
