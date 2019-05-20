@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 20-05-2019 a las 22:48:14
--- Versión del servidor: 5.7.17-log
--- Versión de PHP: 5.6.30
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 21-05-2019 a las 01:55:43
+-- Versión del servidor: 10.1.38-MariaDB
+-- Versión de PHP: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `bd`
+-- Base de datos: `bdsistemaglobal`
 --
 
 -- --------------------------------------------------------
@@ -37,7 +39,7 @@ CREATE TABLE `almacenes` (
 --
 
 INSERT INTO `almacenes` (`alm_id`, `alm_nombre`, `alm_descripcion`) VALUES
-(1, 'Zona 1', 'Guardar los productos que estén en stock'),
+(1, 'Zona 1', 'En este almacén se guardaran los productos stock'),
 (2, 'Zona 2', 'Guardar los productos que estén en stock'),
 (3, 'Zona 3', 'Guardar los productos que estén en stock'),
 (4, 'Zona 4', 'Guardar los productos que estén en stock'),
@@ -74,16 +76,16 @@ INSERT INTO `categorias` (`cat_id`, `cat_nombre`) VALUES
 (3, 'medicamentos'),
 (4, 'útiles'),
 (5, 'ropa'),
-(6, 'Lácteos'),
+(6, 'avena'),
 (7, 'decoraciones'),
-(8, 'Limpieza'),
-(9, 'Tecnologías'),
-(10, 'Frutas y Verduras'),
-(11, 'calzados'),
-(12, 'ropa deportiva'),
-(13, 'Accesorios Deporte'),
-(14, 'Perfumería'),
-(15, 'Casa Hogar');
+(8, 'papel higiénico'),
+(9, 'celulares'),
+(10, 'computadoras'),
+(11, 'zapatillas'),
+(12, 'accesorios de deporte'),
+(13, 'pelotas'),
+(14, 'colonias'),
+(15, 'muebles');
 
 -- --------------------------------------------------------
 
@@ -109,7 +111,8 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`cli_id`, `cli_dni`, `cli_apellidos`, `cli_nombres`, `cli_direccion`, `cli_telefono`, `cli_nacimiento`, `cli_email`, `cli_sexo`, `cli_usuario`) VALUES
-(1, '70327340', 'Pazos Vasquez', 'Mentor', 'jr.atahualp # 130', '923308471', '1996-06-11', 'mentor.701619@gmail.com', 1, 1);
+(5, '74859632', 'PAZOS', 'MENTOR', 'Av Bellavista 604', '965852631', '1997-01-02', 'mentor@sexo.com', 1, 74859632),
+(6, '74859360', 'IGLESIAS', 'Monica', 'Av San Jose', '945963741', '1994-07-04', 'monica@gmail.com', 1, 74859360);
 
 -- --------------------------------------------------------
 
@@ -194,8 +197,21 @@ CREATE TABLE `estados` (
 --
 
 INSERT INTO `estados` (`estado_id`, `estado_nombre`) VALUES
-(1, 'activo'),
-(2, 'inactivo');
+(1, 'disponible'),
+(2, 'no disponible'),
+(3, 'disponible'),
+(4, 'no disponible'),
+(5, 'disponible'),
+(6, 'ocupado'),
+(7, 'disponible'),
+(8, 'no disponible'),
+(9, 'disponible'),
+(10, 'ocupado'),
+(11, 'disponible'),
+(12, 'ocupado'),
+(13, 'disponible'),
+(14, 'no disponible'),
+(15, 'disponible');
 
 -- --------------------------------------------------------
 
@@ -222,7 +238,7 @@ INSERT INTO `estado_de_venta` (`estadVenta_id`, `estadVenta_nombre`) VALUES
 (7, 'finalizado'),
 (8, 'cancelado'),
 (9, 'cancelado'),
-(10, 'enviado'),
+(10, 'agotado'),
 (11, 'enviado'),
 (12, 'cancelado'),
 (13, 'finalizado'),
@@ -251,8 +267,8 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`prod_id`, `prod_codigo`, `prod_nombre`, `prov_id`, `cat_id`, `prod_precioCompra`, `prod_precioVenta`, `prod_descripcion`) VALUES
-(1, '1', 'Mochila', 3, 4, 15, 20, 'Material para usos escolares'),
-(2, '2', 'Sildenafilo', 11, 5, 1, 2, 'Medicamento para el aumento del deseo sexual');
+(1, '1', 'útiles', 3, 4, 15, 20, 'Material para usos escolares'),
+(2, '2', 'Pastillas', 11, 5, 1, 2, 'medicamento para recuperar la salud');
 
 -- --------------------------------------------------------
 
@@ -291,7 +307,7 @@ CREATE TABLE `proveedores` (
   `prov_ruc` varchar(30) NOT NULL,
   `prov_direccion` varchar(50) NOT NULL,
   `prov_telefono` varchar(9) NOT NULL,
-  `prov_email` varchar(50) NOT NULL
+  `prov_email` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -334,8 +350,8 @@ INSERT INTO `puestos_de_trabajo` (`puesto_id`, `puesto_nombre`) VALUES
 (1, 'Maquinista'),
 (2, 'Operador'),
 (3, 'Almacenero'),
-(4, 'Reponedor'),
-(5, 'Jefe de línea'),
+(4, 'Marketing'),
+(5, 'RRHH'),
 (6, 'Mantenimiento'),
 (7, 'Calidad'),
 (8, 'Analista'),
@@ -379,21 +395,9 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`rol_id`, `rol_nombre`, `rol_descripcion`) VALUES
-(1, 'Alejandro', 'administrador'),
-(2, 'Ramis ', 'administrador'),
-(3, 'Joqtan', 'administrador'),
-(4, 'Jorge', 'jefe de Ventas'),
-(5, 'Mentor', 'Almacenero'),
-(6, 'armando', 'Transportista'),
-(7, 'Gutierrez', 'Jefe de Transporte'),
-(8, 'Axel', 'jefe de Ventas'),
-(9, 'morales', 'vendedor'),
-(10, 'Ramos', 'vendedor'),
-(11, 'Michelle', 'Cliente'),
-(12, 'Diana', 'Cliente'),
-(13, 'Omar', 'jefe de compras'),
-(14, 'Llulian', 'Transportista'),
-(15, 'Milla', 'almacenero');
+(16, 'admin', 'Administrador'),
+(17, 'ven', 'Vendedor'),
+(18, 'cli', 'Cliente');
 
 -- --------------------------------------------------------
 
@@ -412,21 +416,7 @@ CREATE TABLE `roles_users` (
 --
 
 INSERT INTO `roles_users` (`rol_user_id`, `rol_id`, `user_id`) VALUES
-(1, 1, 1),
-(2, 2, 2),
-(3, 3, 3),
-(4, 4, 4),
-(5, 5, 5),
-(6, 6, 6),
-(7, 7, 7),
-(8, 8, 8),
-(9, 9, 9),
-(10, 10, 10),
-(11, 11, 11),
-(12, 12, 13),
-(13, 13, 13),
-(14, 14, 14),
-(15, 15, 15);
+(16, 18, 74859632);
 
 -- --------------------------------------------------------
 
@@ -511,8 +501,21 @@ CREATE TABLE `tipo_de_venta` (
 --
 
 INSERT INTO `tipo_de_venta` (`tipoVenta_id`, `tipoVenta_nombre`) VALUES
-(2, 'Presencial'),
-(10, 'Delivery');
+(1, 'delivery'),
+(2, 'presencial'),
+(3, 'delivery'),
+(4, 'unidad'),
+(5, 'media docena'),
+(6, 'paquete'),
+(7, 'unidad'),
+(8, '+ de una docena'),
+(9, 'unidad'),
+(10, 'docena'),
+(11, 'paquete'),
+(12, '+ de una docena'),
+(13, 'media docena'),
+(14, 'unidad'),
+(15, 'docena');
 
 -- --------------------------------------------------------
 
@@ -587,35 +590,21 @@ INSERT INTO `transporte` (`transporte_id`, `empleado_id`, `tipo_vehiculo`, `plac
 --
 
 CREATE TABLE `users` (
-  `user_id` int(11) NOT NULL,
-  `user_usuario` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_password` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_estado` int(11) NOT NULL,
-  `user_remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `id` int(11) NOT NULL,
+  `usuario` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `update_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`user_id`, `user_usuario`, `user_password`, `user_estado`, `user_remember_token`, `created_at`, `update_at`) VALUES
-(1, 'Jeriko05', '123456', 1, NULL, NULL, NULL),
-(2, 'jorke.kai', '123456', 2, NULL, NULL, NULL),
-(3, 'joqtan10', '123456', 1, NULL, NULL, NULL),
-(4, 'jorge10', '123456', 2, NULL, NULL, NULL),
-(5, 'Ramis10', '123456', 1, NULL, NULL, NULL),
-(6, 'Llulian10', '123456', 2, NULL, NULL, NULL),
-(7, 'Axel10', '123456', 1, NULL, NULL, NULL),
-(8, 'Alejandro', '123456', 2, NULL, NULL, NULL),
-(9, 'Gutierrez10', '123456', 1, NULL, NULL, NULL),
-(10, 'Omar10', '123456', 1, NULL, NULL, NULL),
-(11, 'Armando', '123456', 1, NULL, NULL, NULL),
-(12, 'Ramos10', '123456', 1, NULL, NULL, NULL),
-(13, 'Morales10', '123456', 1, NULL, NULL, NULL),
-(14, 'Milla10', '123456', 2, NULL, NULL, NULL),
-(15, 'Michelle10', '123456', 1, NULL, NULL, NULL);
+INSERT INTO `users` (`id`, `usuario`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(74859360, '74859360', '$2y$10$gkFkbuuWIogo.6nW/ZegJeE9MXC79WiBjQPNKup9Ljk0eD9fZJkFW', NULL, '2019-05-20 23:54:12', '2019-05-20 23:54:12'),
+(74859632, '74859632', '$2y$10$hLuF.itamfF2Sq9QtFM.9.B4/r4LNhn.abSfsxVEUOd/gaJkcCqm2', NULL, '2019-05-20 23:16:57', '2019-05-20 23:16:57');
 
 -- --------------------------------------------------------
 
@@ -813,8 +802,7 @@ ALTER TABLE `transporte`
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`),
-  ADD KEY `user_estado` (`user_estado`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `ventas`
@@ -842,106 +830,127 @@ ALTER TABLE `venta_productos`
 --
 ALTER TABLE `almacenes`
   MODIFY `alm_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
   MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `cli_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `cli_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT de la tabla `compras`
 --
 ALTER TABLE `compras`
   MODIFY `com_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT de la tabla `compra_productos`
 --
 ALTER TABLE `compra_productos`
   MODIFY `comProd_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `empleados`
 --
 ALTER TABLE `empleados`
   MODIFY `emp_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `estados`
 --
 ALTER TABLE `estados`
   MODIFY `estado_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT de la tabla `estado_de_venta`
 --
 ALTER TABLE `estado_de_venta`
   MODIFY `estadVenta_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT de la tabla `productos_disponibles`
 --
 ALTER TABLE `productos_disponibles`
   MODIFY `prodDisp_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `productos_en_almacen`
 --
 ALTER TABLE `productos_en_almacen`
   MODIFY `prodAlm_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `proveedores`
 --
 ALTER TABLE `proveedores`
   MODIFY `prov_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT de la tabla `puestos_de_trabajo`
 --
 ALTER TABLE `puestos_de_trabajo`
   MODIFY `puesto_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `rol_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `rol_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
 --
 -- AUTO_INCREMENT de la tabla `roles_users`
 --
 ALTER TABLE `roles_users`
-  MODIFY `rol_user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `rol_user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
 --
 -- AUTO_INCREMENT de la tabla `rutas`
 --
 ALTER TABLE `rutas`
   MODIFY `ruta_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT de la tabla `sexo`
 --
 ALTER TABLE `sexo`
   MODIFY `sexo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT de la tabla `tipo_de_venta`
 --
 ALTER TABLE `tipo_de_venta`
   MODIFY `tipoVenta_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT de la tabla `tipo_registro`
 --
 ALTER TABLE `tipo_registro`
   MODIFY `tipoReg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT de la tabla `transporte`
 --
 ALTER TABLE `transporte`
   MODIFY `transporte_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
   MODIFY `venta_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT de la tabla `venta_productos`
 --
 ALTER TABLE `venta_productos`
   MODIFY `ventaProd_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- Restricciones para tablas volcadas
 --
@@ -951,7 +960,7 @@ ALTER TABLE `venta_productos`
 --
 ALTER TABLE `clientes`
   ADD CONSTRAINT `clientes_ibfk_1` FOREIGN KEY (`cli_sexo`) REFERENCES `sexo` (`sexo_id`),
-  ADD CONSTRAINT `clientes_ibfk_2` FOREIGN KEY (`cli_usuario`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `clientes_ibfk_2` FOREIGN KEY (`cli_usuario`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `clientes_ibfk_3` FOREIGN KEY (`cli_id`) REFERENCES `rutas` (`cli_id`);
 
 --
@@ -971,7 +980,7 @@ ALTER TABLE `compra_productos`
 -- Filtros para la tabla `empleados`
 --
 ALTER TABLE `empleados`
-  ADD CONSTRAINT `empleados_ibfk_1` FOREIGN KEY (`emp_usuario`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `empleados_ibfk_1` FOREIGN KEY (`emp_usuario`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `empleados_ibfk_2` FOREIGN KEY (`emp_sexo`) REFERENCES `sexo` (`sexo_id`),
   ADD CONSTRAINT `empleados_ibfk_3` FOREIGN KEY (`emp_puesto`) REFERENCES `puestos_de_trabajo` (`puesto_id`),
   ADD CONSTRAINT `empleados_ibfk_4` FOREIGN KEY (`emp_id`) REFERENCES `transporte` (`empleado_id`);
@@ -1008,7 +1017,7 @@ ALTER TABLE `registro_almacen`
 -- Filtros para la tabla `roles_users`
 --
 ALTER TABLE `roles_users`
-  ADD CONSTRAINT `roles_users_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `roles_users_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `roles_users_ibfk_2` FOREIGN KEY (`rol_id`) REFERENCES `roles` (`rol_id`);
 
 --
@@ -1016,12 +1025,6 @@ ALTER TABLE `roles_users`
 --
 ALTER TABLE `rutas`
   ADD CONSTRAINT `rutas_ibfk_1` FOREIGN KEY (`transporte_id`) REFERENCES `transporte` (`transporte_id`);
-
---
--- Filtros para la tabla `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`user_estado`) REFERENCES `estados` (`estado_id`);
 
 --
 -- Filtros para la tabla `ventas`
@@ -1037,6 +1040,7 @@ ALTER TABLE `ventas`
 ALTER TABLE `venta_productos`
   ADD CONSTRAINT `venta_productos_ibfk_2` FOREIGN KEY (`venta_id`) REFERENCES `ventas` (`venta_id`),
   ADD CONSTRAINT `venta_productos_ibfk_3` FOREIGN KEY (`prodDisp_id`) REFERENCES `productos_disponibles` (`prodDisp_id`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
