@@ -52,9 +52,18 @@
                 </a>
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
-                <ul class="nav navbar-nav">
-                    <li><a href=""><i class="fa fa-sign-out"></i> Cerrar Sesión</a></li>
-                </ul>
+                    <ul class="nav navbar-nav">
+                        <li>
+                        <a class="btn" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        Cerrar Sesión
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                        </li>
+                    </ul>
                 </div>
             </nav>
         </header>
