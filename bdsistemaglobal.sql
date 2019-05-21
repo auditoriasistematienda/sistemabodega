@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-05-2019 a las 01:55:43
+-- Tiempo de generación: 21-05-2019 a las 02:44:53
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.3
 
@@ -177,9 +177,16 @@ CREATE TABLE `empleados` (
   `emp_telefono` varchar(9) NOT NULL,
   `emp_email` varchar(50) NOT NULL,
   `emp_nacimiento` date NOT NULL,
-  `emp_usuario` int(11) NOT NULL,
-  `emp_puesto` int(11) NOT NULL
+  `emp_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `empleados`
+--
+
+INSERT INTO `empleados` (`emp_id`, `emp_dni`, `emp_apellidos`, `emp_nombres`, `emp_sexo`, `emp_telefono`, `emp_email`, `emp_nacimiento`, `emp_usuario`) VALUES
+(1, '74859888', 'Davila', 'Carlos', 2, '945874126', 'carlos@hotmail.com', '1994-12-15', 74859888),
+(2, '74859621', 'Morales', 'Brenda', 1, '945741620', 'brenda@gmail.com', '1994-02-05', 74859621);
 
 -- --------------------------------------------------------
 
@@ -397,7 +404,8 @@ CREATE TABLE `roles` (
 INSERT INTO `roles` (`rol_id`, `rol_nombre`, `rol_descripcion`) VALUES
 (16, 'admin', 'Administrador'),
 (17, 'ven', 'Vendedor'),
-(18, 'cli', 'Cliente');
+(18, 'cli', 'Cliente'),
+(19, 'trans', 'Transportista');
 
 -- --------------------------------------------------------
 
@@ -416,7 +424,10 @@ CREATE TABLE `roles_users` (
 --
 
 INSERT INTO `roles_users` (`rol_user_id`, `rol_id`, `user_id`) VALUES
-(16, 18, 74859632);
+(16, 18, 74859632),
+(17, 17, 74859888),
+(18, 17, 74859621),
+(19, 18, 74859360);
 
 -- --------------------------------------------------------
 
@@ -604,7 +615,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `usuario`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (74859360, '74859360', '$2y$10$gkFkbuuWIogo.6nW/ZegJeE9MXC79WiBjQPNKup9Ljk0eD9fZJkFW', NULL, '2019-05-20 23:54:12', '2019-05-20 23:54:12'),
-(74859632, '74859632', '$2y$10$hLuF.itamfF2Sq9QtFM.9.B4/r4LNhn.abSfsxVEUOd/gaJkcCqm2', NULL, '2019-05-20 23:16:57', '2019-05-20 23:16:57');
+(74859621, '74859621', '$2y$10$4goiGxyGmAYEfK6HJ9sS1.wFvlcNczUVDqxNFnYhtTYZPFsRwjGSy', NULL, '2019-05-21 00:37:05', '2019-05-21 00:37:05'),
+(74859632, '74859632', '$2y$10$hLuF.itamfF2Sq9QtFM.9.B4/r4LNhn.abSfsxVEUOd/gaJkcCqm2', NULL, '2019-05-20 23:16:57', '2019-05-20 23:16:57'),
+(74859888, '74859888', '$2y$10$dy9Fuk3eKU3cZCm59PDK..IUkMz/x4yRc1j9ZdWcOEjVieshWAxYO', NULL, '2019-05-21 00:31:35', '2019-05-21 00:31:35');
 
 -- --------------------------------------------------------
 
@@ -690,8 +703,7 @@ ALTER TABLE `empleados`
   ADD PRIMARY KEY (`emp_id`),
   ADD UNIQUE KEY `dni_empleado` (`emp_dni`),
   ADD KEY `emp_usuario` (`emp_usuario`),
-  ADD KEY `emp_sexo` (`emp_sexo`),
-  ADD KEY `emp_puesto` (`emp_puesto`);
+  ADD KEY `emp_sexo` (`emp_sexo`);
 
 --
 -- Indices de la tabla `estados`
@@ -859,7 +871,7 @@ ALTER TABLE `compra_productos`
 -- AUTO_INCREMENT de la tabla `empleados`
 --
 ALTER TABLE `empleados`
-  MODIFY `emp_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `emp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `estados`
@@ -901,13 +913,13 @@ ALTER TABLE `puestos_de_trabajo`
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `rol_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `rol_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `roles_users`
 --
 ALTER TABLE `roles_users`
-  MODIFY `rol_user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `rol_user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `rutas`
@@ -982,7 +994,6 @@ ALTER TABLE `compra_productos`
 ALTER TABLE `empleados`
   ADD CONSTRAINT `empleados_ibfk_1` FOREIGN KEY (`emp_usuario`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `empleados_ibfk_2` FOREIGN KEY (`emp_sexo`) REFERENCES `sexo` (`sexo_id`),
-  ADD CONSTRAINT `empleados_ibfk_3` FOREIGN KEY (`emp_puesto`) REFERENCES `puestos_de_trabajo` (`puesto_id`),
   ADD CONSTRAINT `empleados_ibfk_4` FOREIGN KEY (`emp_id`) REFERENCES `transporte` (`empleado_id`);
 
 --

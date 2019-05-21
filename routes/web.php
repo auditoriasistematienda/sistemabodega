@@ -22,8 +22,6 @@ Route::resource('almacen','ProductosAlmacenController')->middleware('auth');
 Route::resource('rutas','RutasController')->middleware('auth');
 Route::resource('empleado','EmpleadoController')->middleware('auth');
 Route::resource('proveedor','ProveedorController')->middleware('auth');
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
