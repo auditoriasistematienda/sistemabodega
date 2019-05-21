@@ -18,28 +18,28 @@
                             <th>DNI</th>
                             <th>Apellidos</th>
                             <th>Nombres</th>
-                            <th>Direccion</th>
                             <th>Telefono</th>
                             <th>Fecha_Nac</th>
                             <th>Email</th>
                             <th>Sexo</th>
-                            <th>usuario</th>
                             <th>Opciones</th>
 
                         </thead>
                         <tbody>
+                        @foreach($empleados as $emp)
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{$emp->emp_dni}}</td>
+                                <td>{{$emp->emp_apellidos}}</td>
+                                <td>{{$emp->emp_nombres}}</td>
+                                <td>{{$emp->emp_telefono}}</td>
+                                <td>{{$emp->emp_nacimiento}}</td>
+                                <td>{{$emp->emp_email}}</td>
+                                <td>{{$emp->emp_sexo}}</td>
+                                <td>
+                                
+                                </td>
                             </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

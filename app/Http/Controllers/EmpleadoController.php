@@ -4,6 +4,9 @@ namespace SistemaGlobal\Http\Controllers;
 
 use SistemaGlobal\Empleado;
 use Illuminate\Http\Request;
+use DB;
+use SistemaGlobal\User;
+use Illuminate\Support\Facades\Hash;
 
 class EmpleadoController extends Controller
 {
@@ -14,7 +17,8 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        return view('empleado.index');
+        $data = DB::table('empleados')->get();
+        return view('empleado.index',['empleados'=>$data]);
     }
 
     /**
@@ -35,7 +39,32 @@ class EmpleadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'emp_dni' => 'required|unique:empleados,emp_dni',
+            'emp_apellidos' => 'required|max:50',
+            'emp_nombres' => 'required|max:50',
+            'emp_sexo' => 'required',
+            'emp_nacimiento' => 'required',
+            'emp_telefono' => 'nullable|min:7|max:13',
+            'emp_email' => 'nullable'
+        ]);
+        $data = $request->all();
+        User::create([
+            'id' => $data['emp_dni'],
+            'usuario' => $data['emp_dni'],
+            'password' => Hash::make($data['emp_dni']),
+        ]);
+        $cliente = Empleado::create([
+            'emp_dni' => $data['emp_dni'],
+            'emp_apellidos' => $data['emp_apellidos'],
+            'emp_nombres' => $data['emp_nombres'],
+            'emp_sexo' => $data['emp_sexo'],
+            'emp_nacimiento' => $data['emp_nacimiento'],
+            'emp_telefono' => $data['emp_telefono'],
+            'emp_email' => $data['emp_email'],
+            'emp_usuario' => $data['emp_dni']
+        ]);
+        return redirect()->route('empleado.index')->with('status', 'Empleado agregado correctamente!');
     }
 
     /**

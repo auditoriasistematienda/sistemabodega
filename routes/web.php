@@ -12,15 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('plantilla.plantilla');
+    return view('auth.login');
 });
-Route::resource('cliente','ClienteController');
-Route::resource('compras','ComprasController');
-Route::resource('ventas','VentasController');
-Route::resource('almacen','AlmacenController');
-Route::resource('rutas','RutasController');
-Route::resource('empleado','EmpleadoController');
-Route::resource('proveedor','ProveedorController');
+Route::resource('cliente','ClienteController')->middleware('auth');
+Route::resource('compras','ComprasController')->middleware('auth');
+Route::resource('ventas','VentasController')->middleware('auth');
+Route::resource('almacen','AlmacenController')->middleware('auth');
+Route::resource('rutas','RutasController')->middleware('auth');
+Route::resource('empleado','EmpleadoController')->middleware('auth');
+Route::resource('proveedor','ProveedorController')->middleware('auth');
 
 Auth::routes();
 
