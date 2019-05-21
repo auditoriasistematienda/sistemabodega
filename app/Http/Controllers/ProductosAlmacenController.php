@@ -4,6 +4,7 @@ namespace SistemaGlobal\Http\Controllers;
 
 use SistemaGlobal\ProductosAlmacen;
 use Illuminate\Http\Request;
+use DB;
 
 class ProductosAlmacenController extends Controller
 {
@@ -14,7 +15,9 @@ class ProductosAlmacenController extends Controller
      */
     public function index()
     {
-        //
+        $data = DB::table('productos_en_almacen')
+        ->get();
+        return view ('almacen.index', ['productos_en_almacen'=>$data]);
     }
 
     /**
